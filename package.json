@@ -1,0 +1,78 @@
+{
+  "name": "world-state-data",
+  "version": "1.0.0",
+  "description": "Worldwide country, state/province, and city/locality data for JavaScript and TypeScript, with a unified JSON dataset and helper APIs.",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "data": "./data/world-state-data.json",
+  "sideEffects": false,
+  "scripts": {
+    "test": "jest",
+    "test:indonesia": "node test-indonesia.js",
+    "build:data": "node tools/build-unified-data.js",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && node tools/sync-assets.js && npm run minify && npm run build:data",
+    "check": "npm test -- --runInBand && npm run test:indonesia",
+    "prepack": "npm run build && npm run check",
+    "minify": "ts-node src/scripts/minify.ts",
+    "split-data": "ts-node src/scripts/splitLargeDatasetFiles-CSC.ts",
+    "update-data": "ts-node src/scripts/combineSplitFilesToMakeALargeDatasetFiles-CSC.ts",
+    "update-data-with-gz": "gz=true ts-node src/scripts/combineSplitFilesToMakeALargeDatasetFiles-CSC.ts",
+    "merge-indonesia": "node tools/merge-indonesia.js",
+    "build:indonesia": "npm run merge-indonesia && npm run update-data && npm run build && npm run test:indonesia"
+  },
+  "author": "rayss868",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayss868/world-state-data.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rayss868/world-state-data/issues"
+  },
+  "homepage": "https://github.com/rayss868/world-state-data#readme",
+  "keywords": [
+    "country",
+    "state",
+    "province",
+    "city",
+    "locality",
+    "world-data",
+    "geolocation",
+    "country-state-city",
+    "location-data",
+    "administrative-division",
+    "typescript",
+    "javascript"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib/",
+    "data/world-state-data.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.18.11",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^3.4.1",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "prettier": "^2.8.3",
+    "ts-jest": "^26.5.6",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

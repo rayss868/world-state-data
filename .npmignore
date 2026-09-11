@@ -1,0 +1,12 @@
+node_modules/
+source-data/
+.sources/
+reports/
+tools/
+coverage/
+.codebase-memory/
+AI_AGENT_HANDOFF_MERCHANT_CITY_SYNC.md
+INDONESIA_MERGE.md
+test-indonesia.js
+jest.config.ts
+src/

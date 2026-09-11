@@ -1,0 +1,9 @@
+node_modules/
+lib/
+coverage/
+.sources/
+.codebase-memory/
+reports/
+AI_AGENT_HANDOFF_MERCHANT_CITY_SYNC.md
+INDONESIA_MERGE.md
+*.log
